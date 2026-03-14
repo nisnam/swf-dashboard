@@ -1,0 +1,213 @@
+{
+  "dv": "outcome_numeric",
+  "ivs": [
+    "funding_stage_num",
+    "revenue_growth_pct",
+    "gross_margin_pct",
+    "company_age",
+    "country_risk_composite",
+    "bilateral_composite",
+    "competitive_intensity",
+    "team_size",
+    "patent_count",
+    "ip_protection_score",
+    "tech_transfer_proxy",
+    "esg_composite",
+    "national_strategy_alignment",
+    "is_pre_revenue",
+    "stability_x_stage",
+    "runway_months",
+    "regulatory_moat"
+  ],
+  "n_train": 5438,
+  "n_test": 1360,
+  "ols_statsmodels": {
+    "r2": 0.06180608189657788,
+    "adj_r2": 0.05945367826711501,
+    "f_stat": 26.27358720352364,
+    "f_pvalue": 2.2534029312198065e-81,
+    "aic": 20213.558317552594,
+    "bic": 20336.397224697204
+  },
+  "models": {
+    "OLS": {
+      "R2": 0.08025311773952293,
+      "MAE": 0.9031502832740932,
+      "RMSE": 1.0576830168593605,
+      "coefficients": {
+        "funding_stage_num": 0.23985506090351216,
+        "revenue_growth_pct": -0.0014880639336292637,
+        "gross_margin_pct": 0.012358006816411719,
+        "company_age": 0.021514193402293387,
+        "country_risk_composite": 0.039583948130069414,
+        "bilateral_composite": 0.019718332633798893,
+        "competitive_intensity": -0.019073385861137857,
+        "team_size": 0.009699351360999487,
+        "patent_count": 0.02797530800180028,
+        "ip_protection_score": 0.012341713093259233,
+        "tech_transfer_proxy": -0.05124164366064117,
+        "esg_composite": -0.00046195556533666236,
+        "national_strategy_alignment": -0.01691262446412707,
+        "is_pre_revenue": 0.025258862985651585,
+        "stability_x_stage": 0.023209106833507444,
+        "runway_months": 0.0003407280300130402,
+        "regulatory_moat": -0.02017416011985543
+      }
+    },
+    "Ridge": {
+      "R2": 0.07921421537612383,
+      "MAE": 0.9040603096004466,
+      "RMSE": 1.058280202501352,
+      "alpha": 429.1934260128778,
+      "coefficients": {
+        "funding_stage_num": 0.15190644729748917,
+        "revenue_growth_pct": -0.008198756910583716,
+        "gross_margin_pct": 0.010525102195391335,
+        "company_age": 0.01975144275413844,
+        "country_risk_composite": 0.003719657715401185,
+        "bilateral_composite": 0.015911536856394865,
+        "competitive_intensity": -0.01643389236877353,
+        "team_size": 0.030477767823076533,
+        "patent_count": 0.025476063060009446,
+        "ip_protection_score": -0.004443460384779391,
+        "tech_transfer_proxy": -0.024145758859418782,
+        "esg_composite": -0.00038052221300363323,
+        "national_strategy_alignment": -0.014578364679188993,
+        "is_pre_revenue": 0.016712973626011363,
+        "stability_x_stage": 0.08409259954202401,
+        "runway_months": 0.0004144205143955399,
+        "regulatory_moat": -0.018244483372082426
+      }
+    },
+    "Lasso": {
+      "R2": 0.07517091775131912,
+      "MAE": 0.9074735839670843,
+      "RMSE": 1.0606011846610781,
+      "alpha": 0.020235896477251564,
+      "coefficients": {
+        "funding_stage_num": 0.21181590896623878,
+        "revenue_growth_pct": -0.0,
+        "gross_margin_pct": 0.0,
+        "company_age": 0.00028036348641273116,
+        "country_risk_composite": 0.0,
+        "bilateral_composite": 0.0,
+        "competitive_intensity": -0.0,
+        "team_size": 0.0,
+        "patent_count": 0.003146671307100261,
+        "ip_protection_score": 0.0,
+        "tech_transfer_proxy": -0.0,
+        "esg_composite": -0.0,
+        "national_strategy_alignment": -0.0,
+        "is_pre_revenue": 0.0,
+        "stability_x_stage": 0.029436100689751922,
+        "runway_months": 0.0,
+        "regulatory_moat": -0.0
+      },
+      "n_nonzero": 4
+    },
+    "ElasticNet": {
+      "R2": 0.07551289434542896,
+      "MAE": 0.9073128539340846,
+      "RMSE": 1.0604050758214998,
+      "alpha": 0.020235896477251564,
+      "l1_ratio": 0.9,
+      "coefficients": {
+        "funding_stage_num": 0.2114224953580173,
+        "revenue_growth_pct": -0.0,
+        "gross_margin_pct": 0.0,
+        "company_age": 0.0023484807879305502,
+        "country_risk_composite": 0.0,
+        "bilateral_composite": 0.0,
+        "competitive_intensity": -0.0,
+        "team_size": 9.860569131188349e-05,
+        "patent_count": 0.005180687513997223,
+        "ip_protection_score": 0.0,
+        "tech_transfer_proxy": -0.0,
+        "esg_composite": -0.0,
+        "national_strategy_alignment": -0.0,
+        "is_pre_revenue": 0.0,
+        "stability_x_stage": 0.03166843545251441,
+        "runway_months": 0.0,
+        "regulatory_moat": -0.0
+      },
+      "n_nonzero": 5
+    }
+  },
+  "lasso_coefficients": [
+    [
+      "funding_stage_num",
+      0.21181590896623878
+    ],
+    [
+      "stability_x_stage",
+      0.029436100689751922
+    ],
+    [
+      "patent_count",
+      0.003146671307100261
+    ],
+    [
+      "company_age",
+      0.00028036348641273116
+    ],
+    [
+      "revenue_growth_pct",
+      -0.0
+    ],
+    [
+      "gross_margin_pct",
+      0.0
+    ],
+    [
+      "country_risk_composite",
+      0.0
+    ],
+    [
+      "bilateral_composite",
+      0.0
+    ],
+    [
+      "competitive_intensity",
+      -0.0
+    ],
+    [
+      "team_size",
+      0.0
+    ],
+    [
+      "ip_protection_score",
+      0.0
+    ],
+    [
+      "tech_transfer_proxy",
+      -0.0
+    ],
+    [
+      "esg_composite",
+      -0.0
+    ],
+    [
+      "national_strategy_alignment",
+      -0.0
+    ],
+    [
+      "is_pre_revenue",
+      0.0
+    ],
+    [
+      "runway_months",
+      0.0
+    ],
+    [
+      "regulatory_moat",
+      -0.0
+    ]
+  ],
+  "interpretations": {
+    "overview": "Testing whether 17 structural venture features can linearly predict outcome categories (0-3 ordinal scale). R\u00b2=0.062 \u2014 statistically significant (F=26.27, p<1e-81) but explains only 6.2% of variance.",
+    "ols_finding": "Only funding_stage_num (p<0.001) and is_pre_revenue (p=0.027) reach statistical significance. The model captures real but limited linear signal \u2014 structural venture attributes have weak linear relationships with outcomes.",
+    "lasso_finding": "Lasso zeroed 13/17 features \u2014 only funding maturity (\u03b2=0.212), political stability interaction (\u03b2=0.029), patents (\u03b2=0.003), and company age (\u03b2<0.001) retain any linear predictive power.",
+    "key_finding": "R\u00b2\u22486% IS the finding, not a failure. Linear models are structurally limited for categorical outcomes. This motivates the shift to non-linear classification models that can capture complex feature interactions.",
+    "bridge": "\u2192 Prediction Engine uses non-linear classifiers (Decision Trees, Random Forest, XGBoost) to improve on linear limitations."
+  }
+}

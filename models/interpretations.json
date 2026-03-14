@@ -1,0 +1,37 @@
+{
+  "home": {
+    "kpi_summary": "SIIP tracks 6,798 ventures across 12 sectors. 1,032 achieved successful exits (15.2%), while 2,872 remain active (42.2%).",
+    "portfolio_health": "Total capital deployed: $1137.6B across 8 regions. Median company age: 6 years."
+  },
+  "pipeline": {
+    "data_quality": "Dataset: 6,798 ventures \u00d7 53 features. 395 ESG values imputed (median). Feature engineering produced 6 composite interaction terms.",
+    "arima": "ARIMA(2,1,2) models deal flow volume over time, forecasting pipeline capacity 12 months ahead. Seasonal decomposition reveals cyclical patterns in SWF investment activity."
+  },
+  "regression": {
+    "overview": "Testing whether 17 structural venture features can linearly predict outcome categories (0-3 ordinal scale). R\u00b2=0.062 \u2014 statistically significant (F=26.27, p<1e-81) but explains only 6.2% of variance.",
+    "ols_finding": "Only funding_stage_num (p<0.001) and is_pre_revenue (p=0.027) reach statistical significance. The model captures real but limited linear signal \u2014 structural venture attributes have weak linear relationships with outcomes.",
+    "lasso_finding": "Lasso zeroed 13/17 features \u2014 only funding maturity (\u03b2=0.212), political stability interaction (\u03b2=0.029), patents (\u03b2=0.003), and company age (\u03b2<0.001) retain any linear predictive power.",
+    "key_finding": "R\u00b2\u22486% IS the finding, not a failure. Linear models are structurally limited for categorical outcomes. This motivates the shift to non-linear classification models that can capture complex feature interactions.",
+    "bridge": "\u2192 Prediction Engine uses non-linear classifiers (Decision Trees, Random Forest, XGBoost) to improve on linear limitations."
+  },
+  "classification": {
+    "imbalance": "Success rate = 15.2% (6:1 class imbalance). Without correction, a naive classifier achieves 84.8% accuracy by always predicting failure. All models use balanced class weights or scale_pos_weight.",
+    "best_model": "Best classifier: Logistic Regression (AUC-ROC = 0.630). Non-linear models significantly outperform linear regression (R\u00b2=6%) by capturing complex feature interactions.",
+    "shap": "SHAP analysis on Gradient Boosting reveals which features drive individual predictions \u2014 enabling analysts to understand WHY a venture is flagged as promising or risky.",
+    "threshold": "At optimal threshold 0.55: F1=0.311. False negatives (missing winners) are costlier than false positives (extra due diligence), so lower thresholds may be strategically preferred."
+  },
+  "clustering": {
+    "overview": "Segmentation identifies natural venture archetypes. K-Means optimal k=2 (silhouette=0.151). Each archetype has distinct risk-return profiles requiring tailored strategies.",
+    "pca": "PCA: 2 components explain 34.7% of total variance. PC1 captures stability_x_stage, PC2 captures funding_stage_num.",
+    "anomaly": "Isolation Forest flagged 340 ventures (5.0%) as anomalous. Anomaly success rate: 27.6% vs normal 14.5%."
+  },
+  "arm": {
+    "overview": "Market-basket analysis adapted for venture screening. 14 continuous features discretized into tercile bins. 71052 total association rules discovered.",
+    "success_patterns": "428 rules predict successful exits. Strongest patterns reveal which feature combinations are most predictive of success.",
+    "anti_patterns": "540 rules predict write-offs \u2014 these serve as automated red-flag screening filters."
+  },
+  "deal_evaluator": {
+    "overview": "Synthesizes all models into a single venture assessment: classification probability, cluster membership, anomaly status, and matching ARM patterns.",
+    "methodology": "Score combines Logistic Regression probability (0.630 AUC), cluster persona context, and 2244 association rules."
+  }
+}
